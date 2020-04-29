@@ -1,0 +1,9 @@
+// grid
+
+display: grid;
+
+grid-template-rows: '60px auto 70px'
+
+grid-template-columns: '30% auto'
+
+grid-area: 'grid-name'
