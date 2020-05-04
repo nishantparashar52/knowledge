@@ -36,78 +36,78 @@ class BT {
         }
         return searchTree(id);
     }
-    // findMin() {
-    //     let current = this.root;
-    //     while(current.left !== '') {
-    //         current = current.left;
-    //     }
-    //     return current.data;
-    // }
-    // findMax() {
-    //     let current = this.root;
-    //     while(current.right !== '') {
-    //         current = current.right;
-    //     }
-    //     return current;
-    // }
-    // isPresent(value) {
-    //     let current = this.root;
-    //     while(current) {
-    //         if(current.data === value) return true;
-    //         if(value > current.data) {
-    //             current = current.right;
-    //         } else current = current.left;
-    //     }
-    //     return false;
-    // }
-    // DfsInorder() {
-    //     // 15,3,36,2,12,28,39
-    //     let result = [];
-    //     const traverse = node => {
-    //         if(node.left) traverse(node.left);
-    //         result.push(node.data);
-    //         if(node.right) traverse(node.right);
-    //     }
-    //     traverse(this.root);
-    //     return result;
-    // }
-    // DfsPreorder() {
-    //     // 15,3,36,2,12,28,39
-    //     let result = [];
-    //     const traverse = node => {
-    //         result.push(node.data);
-    //         if(node.left) traverse(node.left);
-    //         if(node.right) traverse(node.right);
-    //     }
-    //     traverse(this.root);
-    //     return result;
-    // }
-    // DfsPostorder() {
-    //     // 15,3,36,2,12,28,39
-    //     let result = [];
-    //     const traverse = node => {
-    //         if(node.left) traverse(node.left);
-    //         if(node.right) traverse(node.right);
-    //         result.push(node.data);
-    //     }
-    //     traverse(this.root);
-    //     return result;
-    // }
-    // Bfs() {
-    //     let result = [];
-    //     let queue = [];
-    //     queue.push(this.root);
-    //     while(queue.length) {
-    //         let currentNode = queue.shift();
-    //         result.push(currentNode.data); 
-    //         if(currentNode.left) queue.push(currentNode.left);
-    //         if (currentNode.right) queue.push(currentNode.right);
-    //     }
-    //     return result;
-    // }   
+    findMin() {
+        let current = this.root;
+        while(current.left !== '') {
+            current = current.left;
+        }
+        return current.data;
+    }
+    findMax() {
+        let current = this.root;
+        while(current.right !== '') {
+            current = current.right;
+        }
+        return current;
+    }
+    isPresent(value) {
+        let current = this.root;
+        while(current) {
+            if(current.data === value) return true;
+            if(value > current.data) {
+                current = current.right;
+            } else current = current.left;
+        }
+        return false;
+    }
+    DfsInorder() {
+        // 15,3,36,2,12,28,39
+        let result = [];
+        const traverse = node => {
+            if(node.left) traverse(node.left);
+            result.push(node.data);
+            if(node.right) traverse(node.right);
+        }
+        traverse(this.root);
+        return result;
+    }
+    DfsPreorder() {
+        // 15,3,36,2,12,28,39
+        let result = [];
+        const traverse = node => {
+            result.push(node.data);
+            if(node.left) traverse(node.left);
+            if(node.right) traverse(node.right);
+        }
+        traverse(this.root);
+        return result;
+    }
+    DfsPostorder() {
+        // 15,3,36,2,12,28,39
+        let result = [];
+        const traverse = node => {
+            if(node.left) traverse(node.left);
+            if(node.right) traverse(node.right);
+            result.push(node.data);
+        }
+        traverse(this.root);
+        return result;
+    }
+    Bfs() {
+        let result = [];
+        let queue = [];
+        queue.push(this.root);
+        while(queue.length) {
+            let currentNode = queue.shift();
+            result.push(currentNode.data); 
+            if(currentNode.left) queue.push(currentNode.left);
+            if (currentNode.right) queue.push(currentNode.right);
+        }
+        return result;
+    }   
 }
 
-var bst = new BST();
+var bst = new BT();
 bst.add('20');
 bst.add('17');
 bst.add('23');

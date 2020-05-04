@@ -1,4 +1,3 @@
-
 class Node {
     constructor(data, left = null, right = null) {
         this.data = data;
@@ -50,12 +49,19 @@ class BST {
     }
     isPresent(value) {
         let current = this.root;
-        while(current) {
+        const findNode = node => {
             if(current.data === value) return true;
             if(value > current.data) {
-                current = current.right;
-            } else current = current.left;
+                findNode(current.right);
+            } else findNode(current.left);
         }
+        return findNode(current);
+        // while(current) {
+        //     if(current.data === value) return true;
+        //     if(value > current.data) {
+        //         current = current.right;
+        //     } else current = current.left;
+        // }
         return false;
     }
     DfsInorder() {
@@ -97,7 +103,7 @@ class BST {
         queue.push(this.root);
         while(queue.length) {
             let currentNode = queue.shift();
-            result.push(currentNode.data); 
+            result.push(currentNode.data);
             if(currentNode.left) queue.push(currentNode.left);
             if (currentNode.right) queue.push(currentNode.right);
         }
@@ -117,4 +123,8 @@ bst.add('26');
 bst.add('31');
 bst.Bfs();
 
-// 20,17,23,11,22,29,4,26,31
+20,17,23,11,22,29,4,26,31
+
+
+
+
