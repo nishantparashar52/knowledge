@@ -1,5 +1,9 @@
 // Promise
 
+
+var Promise = new Promise((res, rej) => setTimeout(res('success'), 2000));
+
+
 function Top() {
     return parent().then(val => {
     return child(val.id)
@@ -47,9 +51,9 @@ function foo() {
     return result;
 }
 
-let ajax = url => new Promise((resolve, reject) => {
+const ajax = url => new Promise((resolve, reject) => {
     var xhr = new XMLHttpRequest();
-    xhr.onload = () => resolve(this.responseText);
+    xhr.onload = function(){ resolve(this.responseText)};
     xhr.onerror = reject;
     xhr.open('GET', url);
     xhr.send();

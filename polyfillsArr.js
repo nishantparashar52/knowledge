@@ -73,7 +73,46 @@ Array.prototype.reduce = function(fn, initialVal) {
 }
 
 
+Array.prototype.customMap = function(callback) {
+    const arr = [];
+    for(let i = 0, len = this.length; i < len ; i++) arr.push(callback(this[i]));
+    return arr;
+}
 
+[1,2,3].customMap(item => item + 1);
+
+Array.prototype.customForEach = function(callback) {
+    for(let i = 0, len = this.length; i < len ; i++) callback(this[i]);
+    return this;
+}
+
+[1,2,3].forEach(item => item + 1);
+
+Array.prototype.customSome = function(callback) {
+    for(let i = 0, len = this.length; i < len ; i++) {
+        if(callback(this[i])) return true;
+    }
+    return false;
+}
+[1,2,3].customSome(item => item > 2);
+
+Array.prototype.customFind = function(callback) {
+    for(let i = 0, len = this.length; i < len ; i++) {
+        if(callback(this[i])) return this[i];
+    }
+    return false;
+}
+[1,2,3].customSome(item => item > 2);
+
+Array.prototype.customReduce = function(callback, intialVal) {
+    let acc = intialVal || undefined;
+    for(let i = 0, len = this.length; i < len ; i++) {
+        if(acc !== undefined ) acc = callback(acc, this[i]);
+        else acc = callback(this[i]);
+    }
+    return acc;
+}
+[1,2,3].customReduce((a,b) => a + b, 0);
 
 
 
