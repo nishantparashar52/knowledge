@@ -4,6 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book MY Show Seating</title>
+    <style>
+        td[exist="true"] {
+            border: 1px solid #ccc;
+            height: 10px;
+            width: 10px;
+            padding: 3px;
+            border-radius: 3px;
+            color: #000;
+            background-color: #ccc;
+            cursor: disabled;
+        }
+        td[available="true"] {
+            background-color: #fff;
+            cursor: pointer;
+        }
+        td.booking {
+            background-color: #ccc; 
+        }
+        .btn {
+            display: flex;
+            flex: 1 1 auto;
+            background: #0378FF;
+            border-radius: 3px;
+            padding: 6px;
+            color: #fff;
+            text-align: center;
+            min-width: 100px;
+            margin: 0 auto;
+            transition: all 0.3s ease-in;
+            font-size: 14px;
+            margin-top: 10px;
+            justify-content: center;
+        }
+    </style>
 </head>
 <body>
     <div id="bookMyshow"></div>
