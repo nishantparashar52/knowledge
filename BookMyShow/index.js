@@ -49,7 +49,7 @@ const {
 } = BMSData;
 class BookMyShow {
     constructor(seatsNeeded) {
-        this.rowName = ['A', 'B', 'C', 'D', 'E'];
+        this.rowName = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
         this.category = new Array(category.length - 1);
         this.seatsNeeded = seatsNeeded;
         this.bookedSeats = [];
@@ -66,7 +66,12 @@ class BookMyShow {
             let start = layout[i].start;
             let end = layout[i].end;
             let seats = layout[i].seats;
+            const thElem = [];
+            const th = document.createElement('th');
+            let thNode = document.createTextNode(this.rowName[i]);
+            th.appendChild(thNode);
             const tr = document.createElement('tr');
+            tr.appendChild(th);
             for (let j = 0; j < end; j++) {
                 let textNode;
                 const td = document.createElement('td');
