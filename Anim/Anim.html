@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation</title>
+    <style>
+        .parentBox {
+            height: 10px;
+            width: 100vw;
+            border: 1px solid #000
+        }
+        .childBox {
+            width: 0;
+            height: 10px;
+            background-color: #000;
+            transition: width 0.3s ease-in;
+        }
+    </style>
+</head>
+<body>
+    <div class="parentBox">
+        <div class="childBox"></div>
+    </div>
+    <script src="./Anim.js" type="text/javascript"></script>
+</body>
+</html>

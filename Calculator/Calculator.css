@@ -1,0 +1,31 @@
+.calculator {
+    width: 300px;
+    margin: 0 auto;
+    height: 300px;
+}
+.keyboard {
+    display: flex;
+    flex-wrap: wrap;
+
+}
+button {
+    flex-basis: 25%;
+    border-radius: 50%;
+    height: 50px;
+}
+.history, .result {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 14px;
+    color: #151414;
+}
+
+.result {
+    font-size: 18px;
+    color: #000;
+    flex-direction: column;
+    min-height: 40px;
+}
+.result > div {
+    text-align: right;
+}

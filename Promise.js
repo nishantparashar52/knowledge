@@ -73,3 +73,17 @@ let ajax = url => new Promise((resolve, reject) => {
 });
 ajax("https://teamtreehouse.com/jamesbarnett.json")
 .then(response =>  renderData(JSON.parse(response))).catch(() => console.log('error occured'));
+
+
+// promise chaining
+var wait2 = time => new Promise(resolve => setTimeout(() => resolve(time)));
+
+wait2(3000).then(() => new Promise(res => res('foo')))
+.then(res => res)
+.then(res => console.log(res))
+.then(() => null)
+.then(c => console.log(c))
+.then(() => {throw new Error('foo');})
+.then(d => console.log(d), c=> console.log(c))
+.then(f => console.log(f))
+.catch(e => console.log(`ee ${e}`));
