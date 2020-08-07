@@ -66,7 +66,7 @@ Array.prototype.filter = function(fn, b) {
 Array.prototype.reduce = function(fn, initialVal) {
     const acc = initialVal || undefined;
     for(let i = 0; i < this.length; i++) {
-        if(acc !== undefined) acc = fn.call(b, acc, this[i], i, this);
+        if(acc !== undefined) acc = fn.call(acc, this[i], i, this);
         else acc = this[i];
     }
     return acc;

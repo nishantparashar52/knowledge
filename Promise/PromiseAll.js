@@ -20,7 +20,7 @@ p1.getUsers();
 Promise.all(p1.getUsers(), p1.getEmp()).then(data => p1.showUI(...data));
 
 function task(time) {
-    new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
         setTimeout(() => {
             resolve(time)
         }, time);
@@ -54,11 +54,19 @@ resolveAll(promise).then(results => {
 // flatten array pseudocode
 
 function flatten(arr) {
-    const finalArr = [];
     for(let i = 0, len = arr.length; i < len; i++) {
         const elem = arr[i];
         if(Array.isArray(elem)) {
-            finalArr = finalArr.concat(this.flatten.call(elem));
+            finalArr = Array.concat([], flatten(elem));
         } else finalArr.push(elem);
     }
+}
+
+function flatten(arr, result = []) {
+    for(let i = 0, len = arr.length; i < len; i++) {
+        const elem = arr[i];
+        if(Array.isArray(elem)) flatten(elem, result);
+        else result.push(elem);
+    }
+    return result;
 }
