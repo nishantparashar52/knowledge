@@ -67,3 +67,17 @@ export function throttleFn(fn, delay) {
         }, delay);
     };
 }
+
+function debounce(fn, delay) {
+    let timeout = null;
+    return function () {
+        const context = this;
+        const args = arguments;
+        const innerFn = () => {
+            timeout = null;
+            fn.apply(context, args);
+        }
+        clearTimeout(timeout);
+        timeout = setTimeout(innerFn, delay);
+    };
+}

@@ -1,0 +1,34 @@
+{
+    "screen1" : {
+        "data" : [{
+            "question1" : {
+                "type" : "textbox",
+                "name": "What is your name?"
+            }
+        },{
+        "question1" : {
+            "type" : "checkbox",
+            "name": "Do you like us ?"
+        }
+        }
+    ],
+        "success": {
+            "rating" : {
+                "5" : {
+                    "showPopup" : "popUpName"
+                },
+                "3" : "What went wrong"
+            }
+        },
+        "skip" : "endProcess" 
+    },
+    "screen2" : {
+        "success": {
+            "rating" : {
+                "5" : "Thank you for choosing us",
+                "3" : "What went wrong"
+            }
+        },
+        "skip" : "endProcess" 
+    }
+}
