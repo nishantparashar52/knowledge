@@ -81,3 +81,20 @@ function debounce(fn, delay) {
         timeout = setTimeout(innerFn, delay);
     };
 }
+
+// new way of writing
+
+<input onkeyup="dbFn" type="text" />
+
+function debounce(fn, delay) {
+    let timer;
+    return function() {
+        let context = this,
+            args = arguments;
+        clearTimeout(timer);
+        timer = setTimeout(() => fn.apply(context, args), delay);
+    }
+}
+let countTimer = 0;
+
+const dbFn = debounce(() => console.log('useful', ++countTimer), 300);

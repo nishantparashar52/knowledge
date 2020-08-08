@@ -28,3 +28,18 @@ var module = {
 }
 
 module.getName();
+
+
+var obj = {firstName: 'nishant', lastName: 'parashar'};
+function FnCall(name, age) {
+    console.log(this.firstName + ''+ name, + '' + age + '' + this.lastName);
+}
+
+Function.prototype.bindCustom = (...arg) => {
+    const params = arg.slice(1);
+    return function (...args) {
+        this.apply(arg[0], [...params, ...args]);
+    }
+}
+
+
