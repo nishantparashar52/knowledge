@@ -1,17 +1,32 @@
 {
-  "name": "Knowledge",
+  "name": "knowledge",
   "version": "1.0.0",
   "description": "Knowledge project.",
   "scripts": {
-    "lite": "lite-server --port 10001",
-    "start": "npm run lite"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
   },
-  "author": "",
+  "author": "nishant parashar",
   "license": "ISC",
   "devDependencies": {
-    "lite-server": "^1.3.1"
+    "lite-server": "^1.3.1",
+    "react-scripts": "latest"
   },
   "dependencies": {
     "http-server": "^0.12.3"
-  }
+  },
+  "main": "BST.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nishantparashar52/knowledge.git"
+  },
+  "keywords": [
+    "know"
+  ],
+  "bugs": {
+    "url": "https://github.com/nishantparashar52/knowledge/issues"
+  },
+  "homepage": "https://github.com/nishantparashar52/knowledge#readme"
 }
