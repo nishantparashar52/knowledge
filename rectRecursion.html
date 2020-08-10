@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rectangle inside Rectangle</title>
+</head>
+<body>
+    <script type="text/javascript">
+        class Rectangle {
+            constructor(d, count, g) {
+                this.dimension = d;
+                this.count = count;
+                this.gradient = g;
+            }
+            createBox() {
+                let equalHeight = this.dimension/this.count;
+                for(let i = 0; i < this.count; i++) {
+                    let colorGradient = this.count > 0 ? this.gradient ? 255 - equalHeight : equalHeight : 0;
+                    let elem = document.createElement('div');
+                    let counterHeight = i * equalHeight;
+                    let position = this.dimension - counterHeight;
+                    elem.style.height = position + 'px';
+                    elem.style.width = position + 'px';
+                    elem.style.position = 'absolute';
+                    elem.style.top = counterHeight + 'px';
+                    elem.style.left = counterHeight + 'px';
+                    elem.style.backgroundColor = `rgba(${colorGradient}, 0, ${colorGradient}, 0.3)`;
+                    elem.style.marginLeft = -(counterHeight)/2 + 'px';
+                    elem.style.marginTop = -(counterHeight)/2 + 'px';
+                    document.body.appendChild(elem);
+                }
+            }
+        }
+        var R1 = new Rectangle(500, 5, false);
+        R1.createBox();
+    </script>
+</body>
+</html>
