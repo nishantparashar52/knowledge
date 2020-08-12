@@ -10,7 +10,6 @@ var ele = [
     {dataset:{displayName:'break 6', level:1}}
 ];
 
-const arr = [{'break 1': ''}, {'break 2':''}, {'break 3': ''}, {'break 4': [{'break 4.1': ''}, {'break 4.2': ''}]}, {'break 5': {'break 5.1': ''}}, {'break 6': ''}];
 function objToArr(array){
     const arr = [];
     for(let i = 0, len = array.length ; i < len; i++) {
