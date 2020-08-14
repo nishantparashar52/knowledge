@@ -16,7 +16,7 @@ function maxAreaOfIsland(grid) {
       return ans;
   }
   function getInitialData(row, column) {
-    return Array.from((Array(row), _ => Array(3).fill(0);
+    return Array.from(Array(row), _ => Array(3).fill(0));
   }
 
   maxAreaOfIsland([[0,0,1,0,0,0,0,1,0,0,0,0,0],

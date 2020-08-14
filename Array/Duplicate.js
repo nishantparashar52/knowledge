@@ -26,4 +26,4 @@ function findIndex(arr) {
     }
 }
 
-findIndex([0,0,0,0,0,1,1]); 
+findIndex([0,0,0,0,0,1,1]);

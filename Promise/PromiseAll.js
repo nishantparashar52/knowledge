@@ -70,3 +70,12 @@ function flatten(arr, result = []) {
     }
     return result;
 }
+
+function flatten(arr) {
+    for(let i = 0, len = arr.length; i < len; i++) {
+        const elem = arr[i];
+        if(Array.isArray(elem)) flatten(result);
+        else result = result.concat(elem);
+    }
+    return result;
+}

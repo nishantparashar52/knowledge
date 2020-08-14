@@ -17,11 +17,11 @@ function objToArr(array){
         const name = elem.displayName;
         const level = elem.level;
         if(level === 1) {
-            arr.push({name: []});
+            arr.push({[name]: []});
         } else if(level > 1) {
             for(const [key,value] of Object.entries(arr[length - 1])) {
                 if(Array.isArray(value)) arr[len - 1] = [];
-                else arr[len - 1].push({name: ''});
+                else arr[len - 1].push({[name]: ''});
             }
         }
     }

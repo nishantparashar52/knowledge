@@ -6,7 +6,6 @@ function Permutation (string) {
         if(string.indexOf(char) != i) continue;
         const remainingStr = string.slice(0, i) + string.slice(i + 1, len);
         for(let permutation of Permutation(remainingStr)) {
-            console.log(permutation);
             pc.push(char + permutation)
         }
     }
