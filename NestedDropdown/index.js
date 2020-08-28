@@ -26,8 +26,8 @@
 // {'prashant': []}]
 // Dropdown(data);
 
-function flatten(obj) {
-    let selectBox = document.createElement('select');
+function flatten(obj, parent) {
+    let selectBox = parent || document.createElement('select');
     for(let i =0,len = obj.length; i < len; i++) {
         for(let [key, value] of Object.entries(obj[i])) {
             if(value === '') {
@@ -46,29 +46,29 @@ function flatten(obj) {
                         option.append(node);
                         selectBox.children[i].append(option);
                     }
-                    break;
                 }
             }
         }
     }
     document.getElementById('content').appendChild(selectBox);
-    selectBox.addEventListener("mouseenter", function( event ) {   
-        // highlight the mouseenter target
-        event.target.style.color = "purple";
-        setTimeout(() => {
-            event.target.style.color = ""; 
-        },500);
-    });
-    selectBox.addEventListener('mouseover', function(ev){
-        console.log(ev.target);
+    selectBox.addEventListener('onchange', function(ev){
+        const filteredData = [];
+        for(let i = 0,len = obj.length; i < len; i++) {
+            for(let [key, value] of Object.entries(obj[i])) {
+                if(value === ev.target.value) filteredData.push(obj[i]);
+            }
+        }
+        ev.target.append(flatten(filteredData, ev.target));
     });
 }
 
 let obj = [
-    {'prashant': '',},
+    {'prashant': ''},
     {'nishant': ''},
     {'abc': 'nishant'},
     {'aa': 'nishant'},
     {'ankit': ''}
 ]
 flatten(obj);
+
+// not able to find click event on option

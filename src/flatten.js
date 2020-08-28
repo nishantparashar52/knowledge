@@ -55,3 +55,50 @@ function* flatten(array, depth) {
         }
     }
 }
+
+
+// flatten array pseudocode
+
+function flatten(arr) {
+    for(let i = 0, len = arr.length; i < len; i++) {
+        const elem = arr[i];
+        if(Array.isArray(elem)) {
+            finalArr = Array.concat([], flatten(elem));
+        } else finalArr.push(elem);
+    }
+}
+
+function flatten(arr, result = []) {
+    for(let i = 0, len = arr.length; i < len; i++) {
+        const elem = arr[i];
+        if(Array.isArray(elem)) flatten(elem, result);
+        else result.push(elem);
+    }
+    return result;
+}
+
+function flatten(arr) {
+    for(let i = 0, len = arr.length; i < len; i++) {
+        const elem = arr[i];
+        if(Array.isArray(elem)) flatten(result);
+        else result = result.concat(elem);
+    }
+    return result;
+}
+
+function flatten(arr, acc = 0) {
+    return arr.reduce((acc, curr) => Array.isArray(curr) ? flatten(curr, acc) : acc + curr, 0)
+}
+
+function flatten(arr) {
+    let result = [];
+    function innerFn(arr) {
+        for(let i = 0, len = arr.length; i < len; i++) {
+            const elem = arr[i];
+            if(Array.isArray(elem)) innerFn(elem);
+            else result = result.concat(elem);
+        }
+    }
+    innerFn(arr);
+    return result;
+}

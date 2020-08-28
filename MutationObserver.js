@@ -14,7 +14,6 @@ const config = {
 
 const callback = mutationList => {
     for (let mutation of mutationList) {
-        debugger;
         if (mutation.type === 'childList') {
             console.log('elem added');
         } else if (mutation.type === 'attributes') {

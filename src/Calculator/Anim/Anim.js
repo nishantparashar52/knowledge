@@ -30,3 +30,16 @@ class Anim {
 var Animation = new Anim();
 Animation.move(20); // in how much second it should cover say 1 second then
 // logic would be it would cover in 1 second from start to end
+
+function animate(elem, time, width) {
+    let element = document.getElementById(elem);
+    let timeRef = time;
+    let left = 0;
+    timer = setInterval(() => {
+        if (time === 0) clearInterval(timer);
+        left += width / timeRef;
+        element.style.left = left + 'px';
+        time = time - 1;
+    }, 1000);
+}
+animate('elem', 20, window.innerWidth);

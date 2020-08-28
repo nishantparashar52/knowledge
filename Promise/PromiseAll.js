@@ -50,32 +50,3 @@ resolveAll(promise).then(results => {
 }).catch(e => {
     console.log('error');
 });
-
-// flatten array pseudocode
-
-function flatten(arr) {
-    for(let i = 0, len = arr.length; i < len; i++) {
-        const elem = arr[i];
-        if(Array.isArray(elem)) {
-            finalArr = Array.concat([], flatten(elem));
-        } else finalArr.push(elem);
-    }
-}
-
-function flatten(arr, result = []) {
-    for(let i = 0, len = arr.length; i < len; i++) {
-        const elem = arr[i];
-        if(Array.isArray(elem)) flatten(elem, result);
-        else result.push(elem);
-    }
-    return result;
-}
-
-function flatten(arr) {
-    for(let i = 0, len = arr.length; i < len; i++) {
-        const elem = arr[i];
-        if(Array.isArray(elem)) flatten(result);
-        else result = result.concat(elem);
-    }
-    return result;
-}

@@ -51,10 +51,11 @@ function delay(ms, value) {
 function All(promises) {
     return new Promise((resolve,reject) => {
         let count = promises.length;
+        let arr = [];
         function nextPromise() {if(--count === 0) resolve('done');}
         promises.forEach((promise, index) => {
             promise
-            .then(val => val, er => er)
+            .then(val => {arr.push(val); return val}, er => er)
             .then(nextPromise)
             .catch(er => er)
         });
@@ -89,3 +90,32 @@ function All(promises) {
 //         });
 //     })
 // }
+
+
+let promise1 = new Promise((resolve, reject) => setTimeout(() => resolve('done1'), 3000));
+let promise2 = new Promise((resolve, reject) => setTimeout(() => resolve('done2'), 2000));
+let promise3 = new Promise((resolve, reject) => setTimeout(() => resolve('done3'), 1000));
+
+
+function PromiseAll(promises) {
+    return new Promise((resolve, reject) => {
+        let count = 0;
+        let array = [];
+        promises.map((promise, index) => {
+            debugger;
+            function isAllresolved(item) {
+                if(count === promises.length) {
+                    resolve(array);
+                }
+            }
+            promise.then(item => {
+                count++;
+                isAllresolved(item);
+                array[index] = item;
+            }).catch(er => new Error('promise giving error'));
+        })
+    })
+}
+
+PromiseAll([promise1, promise2, promise3]).then(val => console.log(val));
+

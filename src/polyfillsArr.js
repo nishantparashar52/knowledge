@@ -105,7 +105,7 @@ Array.prototype.customFind = function(callback) {
 [1,2,3].customSome(item => item > 2);
 
 Array.prototype.customReduce = function(callback, intialVal) {
-    let acc = intialVal || undefined;
+    let acc = intialVal === undefined ? undefined: initialVal;
     for(let i = 0, len = this.length; i < len ; i++) {
         if(acc !== undefined ) acc = callback(acc, this[i]);
         else acc = callback(this[i]);
