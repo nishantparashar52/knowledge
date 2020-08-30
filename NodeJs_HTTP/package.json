@@ -1,0 +1,15 @@
+{
+  "name": "nodejs_http",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "nishant",
+  "license": "ISC",
+  "dependencies": {
+    "express-validator": "^6.6.1",
+    "memory-cache": "^0.2.0"
+  }
+}
