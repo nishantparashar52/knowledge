@@ -22,9 +22,9 @@ const course = [{
 }];
 
 cache.put('course', course);
-cache.put('foo', 'bar');
+
 app.get('/', (req,res) => {
-    res.send('hello world hello');
+    res.send('Hey Thanks for showing up');
 });
 app.get('/api/courses/:id', (req,res) => {
     let data;
