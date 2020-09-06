@@ -2,9 +2,9 @@ import { call, put, takeLatest, all } from 'redux-saga/effects';
 import axios from 'axios';
 import { types } from '../actions';
 
-export function* fetchHistoricalData() {
+export function* fetchHistoricalData({ query }) {
   try {
-    const url = `http://kaboom.rksv.net/api/historical`;
+    const url = `http://kaboom.rksv.net/api/historical${query}`;
     const response = yield call(axios.get, url);
     yield put({
       type: types.FETCH_HISTORICAL_SUCCESS,
