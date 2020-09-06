@@ -2,8 +2,7 @@ function FlattenObj(obj) {
     let finalObj = {};
     function innerFn(obj, pkey) {
         let parentKey = pkey;
-        for(let arr of Object.entries(obj)) {
-            const [key, value ] = arr;
+        for(let [key, value] of Object.entries(obj)) {
             const finalKey = parentKey ? parentKey + '_' + key : key;
             if(typeof value === 'object') {
                 innerFn(value, finalKey);
@@ -24,5 +23,12 @@ const obj = {
             c: [{ a: 12}, 32]
         }
     }
+}
+
+function FlattenObj(obj, pkey = '') {
+    Object.keys(obj).reduce((acc, curr) => {
+        let parentKey = pkey ? pkey + '_' + curr : curr;
+        return acc.concat(typeof obj[curr] === 'object') ? FlattenObj(obj[curr], parentKey) : Object.assign(parentKey, {[curr] : obj[curr]})
+});
 }
 console.log(FlattenObj(obj));

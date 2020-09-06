@@ -102,3 +102,39 @@ function flatten(arr) {
     innerFn(arr);
     return result;
 }
+function flatten(arr, result = []) {
+    for(let i = 0, len = arr.length; i < len; i++) {
+        const elem = arr[i];
+        if(Array.isArray(elem)) flatten(elem, result);
+        else result = result.concat(elem);
+    }
+    return result;
+}
+
+function* flatten(arr) {
+    for(const item of arr) {
+        if(Array.isArray(item)) {
+            yield* flatten(item);
+        } else yield item;
+    }
+}
+
+
+function diff(date1, date2) {
+    let d2 = new Date(date2);
+    let d1 = new Date(date1);
+    let d = d2 - d1;
+    let year = leapYear(d2);
+    let second, minutes, hour, day;
+    second = (d/1000) % 60;
+    minutes = d/(1000 * 60) % 60;
+    hour = d/(1000 * 60 * 60) % 24;
+    day = Math.floor(d/(1000 * 60 * 60 * 24) % year);
+    return `day ${day} hour ${hour} minutes ${minutes} second ${second}`;
+}
+
+function leapYear(date) {
+    let year = date.getFullYear();
+    let leapYear = year % 100 ? year % 400 : year % 4;
+    return leapYear === 0 ? 366 : 365;
+}
