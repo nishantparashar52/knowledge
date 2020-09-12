@@ -7,7 +7,7 @@ Child.prototype = {
 function Parent(){}
 var proto = new Child();
 proto.barName = 'ankit';
-    Parent.prototype = proto;
+Parent.prototype = proto;
 
 var instance = new Parent();
 instance.barName; // ankit
@@ -20,8 +20,8 @@ foo.prototype = {
 }
 
 function Parent(){}
-    var proto = Object.create(Child.prototype);
-    proto.barName = 'ankit';
+var proto = Object.create(Child.prototype);
+proto.barName = 'ankit';
 Parent.prototype = proto;
 var instance = new Parent();
 instance.barName; // ankit

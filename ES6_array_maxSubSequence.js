@@ -17,6 +17,16 @@ function maxSum(arr) {
     return finalMaxSum;
 }
 
+function maxContinuousArr(arr) {
+    let max = 0, maxEnd = 0;
+    for(let i =0, len = arr.length; i < len; i++) {
+        let maxEnd = maxEnd + arr[i];
+        if(maxEnd > max) max = maxEnd;
+        if(maxEnd < 0) maxEnd = 0;
+    }
+    return max;
+}
+
 [-2, 0, 1, 3]  ===  [0, 1, 4, 9]
 
 function Square(...args) {

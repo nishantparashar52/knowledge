@@ -68,7 +68,7 @@ export function throttleFn(fn, delay) {
     };
 }
 
-function debounce(fn, delay) {
+export function debounce(fn, delay) {
     let timeout = null;
     return function () {
         const context = this;

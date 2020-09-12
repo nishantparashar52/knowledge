@@ -27,3 +27,25 @@ function indexOfFirstOne(arr) {
 }
 
 [0,0,0,0,0,0,1,1];
+
+function Permutation (string, k) {
+    if(string.length < 2) return string;
+    let pc = [];
+    for(let i = 0, len = string.length; i < len; i++) {
+        const char = string[i];
+        if(string.indexOf(char) != i) continue;
+        const remainingStr = string.slice(0, i) + string.slice(i + 1, len);
+        for(let permutation of Permutation(remainingStr)) {
+            pc.push(char + permutation);
+        }
+    }
+    return pc;
+}
+
+Permutation('ab', 4);
+
+function oddNumber(arr) {
+    let obj = {};
+    arr.reduce((acc, curr) => obj[curr] ? obj[curr] = obj[curr] + 1 : obj[curr] = 1, {});
+    Object.values(obj).find(item => item % 2 !== 0 && item !== 0);
+}
