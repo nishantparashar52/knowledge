@@ -22,7 +22,5 @@ let handleInput = function (query, dispatch) {
 };
 handleInput = debounce(handleInput, 200);
 
-function f(input) {
-    return input.reduce((acc, curr) => acc.concat(Array.isArray(curr) ? f(curr): curr), []);
-}
+function f(input) { return input.reduce((acc, curr) => acc.concat(Array.isArray(curr) ? f(curr): curr), []);}
 console.log(f([[1, 2], [[3, 4]], 5, [6], 7]));
