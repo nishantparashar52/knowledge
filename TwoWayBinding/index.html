@@ -1,25 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css" type="text/css" />
     <title>Document</title>
 </head>
+
 <body>
-    <label to="name">Name
-    </label>
-    <input type="text" data-model="name" id="name" />
-    <span data-binding="name"></span>
-
-    <label to="phone">Phone
-    </label>
-    <input type="text" id="phone" data-model="phone"/>
-    <span data-binding="phone"></span>
-
-    <label to="class">Class
-    </label>
-    <input type="text" id="class"  data-model="class" />
-    <span data-binding="class"></span>
+    <div class="group">
+        
+        <input type="text" data-model="name" id="name" />
+        <span class="highlight"></span>
+        <span class="bar"></span>
+        <label to="name">Name
+        </label>
+        <span data-binding="name"></span>
+    </div>
+    <div class="group">
+        <input type="text" id="phone" data-model="phone" />
+        
+        <span class="highlight"></span>
+        <span class="bar"></span>
+        <label to="phone">Phone
+        </label>
+        <span data-binding="phone"></span>
+    </div>
+    <div class="group">
+        <input type="text" id="class" data-model="class" />
+        <span class="highlight"></span>
+        <span class="bar"></span>
+        <label to="class">Class
+        </label>
+        <span data-binding="class"></span>
+    </div>
     <script type="text/javascript" src='index.js'></script>
 </body>
+
 </html>
