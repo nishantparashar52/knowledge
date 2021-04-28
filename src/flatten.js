@@ -1,5 +1,6 @@
 function flatten(arr) {
     var outputArr = [];
+    recursiveArr();
     function recursiveArr(inputArr = arr) {
         for(let i = 0, len = inputArr.length; i < len; i++) {
             if(Array.isArray(inputArr[i])) {
