@@ -1,5 +1,6 @@
 function flatten(arr) {
     var outputArr = [];
+    recursiveArr();
     function recursiveArr(inputArr = arr) {
         for(let i = 0, len = inputArr.length; i < len; i++) {
             if(Array.isArray(inputArr[i])) {
@@ -10,8 +11,7 @@ function flatten(arr) {
     return outputArr;
 }
 
-var flat = flatten(['12', 12, [3,4,5,[6,[7]]]]);
-flat();
+console.log(flatten(['12', 12, [3,4,5,[6,[7]]]]));
 
 function* flatten(arr, indexArr = arr) {
     for(let i = 0, len = inputArr.length; i < len; i++) {
