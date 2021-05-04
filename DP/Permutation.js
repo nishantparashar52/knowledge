@@ -49,3 +49,15 @@ function oddNumber(arr) {
     arr.reduce((acc, curr) => obj[curr] ? obj[curr] = obj[curr] + 1 : obj[curr] = 1, {});
     Object.values(obj).find(item => item % 2 !== 0 && item !== 0);
 }
+// simplest code for finding permutation
+function Permutation (string, finalStr = "") {
+    if(string.length === 0) {
+        console.log(finalStr);
+        return;
+    }
+    for(let i = 0, len = string.length; i < len; i++) {
+        const char = string[i];
+        const remainingStr = string.slice(0, i) + string.slice(i + 1, len);
+        Permutation(remainingStr, finalStr + char);
+    }
+}
