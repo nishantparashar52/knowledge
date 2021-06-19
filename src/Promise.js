@@ -87,3 +87,13 @@ wait2(3000).then(() => new Promise(res => res('foo')))
 .then(d => console.log(d), c=> console.log(c))
 .then(f => console.log(f))
 .catch(e => console.log(`ee ${e}`));
+
+
+
+
+/* Promise Chaining */
+new Promise((resolve, reject) => {
+    setTimeout(() => resolve, 1000);
+}).then( result => {console.log(result); return result * 2;}).then(result => result * 2);
+
+document.getElementById('item').addEventListener('click', ev => ev.preventDefault());

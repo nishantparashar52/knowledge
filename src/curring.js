@@ -59,7 +59,7 @@ curry(10,20);
 const curryied = curry(sum);
 function curry(fn){
     return function curried (...arg) {
-        if(fn.length < arg.length) fn(arg);
+        if(fn.length <= arg.length) return fn(arg);
         else {
             return function (...args2) {
                 return curried.apply(arg.concat(...args2));
@@ -70,7 +70,7 @@ function curry(fn){
 
 
 const curry = (fn, ...args) =>
-args.length >= fn.length ? fn.apply(...args) : (...x) => curry(fn, ...args, x);
+args.length >= fn.length ? fn.apply(this, ...args) : (...x) => curry(fn, ...args, x);
 
 function calculation(a,b,c){
     return a*b/c;

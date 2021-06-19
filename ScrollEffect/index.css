@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    
+}
+.container {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100vh;
+}
+section {
+    color: #fff;
+    height: 100vh;
+    scroll-snap-align: start;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+}
+.a {
+    background-color: #ccc;
+}
+.b {
+    background-color: gainsboro;
+    height: 50vh;
+}
+
+.c {
+    background-color: blueviolet;
+}
+
+.d {
+    background-color: greenyellow;
+}

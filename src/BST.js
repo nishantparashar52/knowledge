@@ -56,13 +56,6 @@ class BST {
             } else findNode(current.left);
         }
         return findNode(current);
-        // while(current) {
-        //     if(current.data === value) return true;
-        //     if(value > current.data) {
-        //         current = current.right;
-        //     } else current = current.left;
-        // }
-        return false;
     }
     DfsInorder() {
         // 15,3,36,2,12,28,39

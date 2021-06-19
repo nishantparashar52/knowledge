@@ -32,4 +32,4 @@ observarble.subscribe(update1);
 observarble.subscribe(update2);
 observarble.subscribe(update3);
 
-input.addEventListener('keyup', ev => observarble.notify(event.target.value));
+input.addEventListener('keyup', ev => observarble.notify(ev.target.value));
