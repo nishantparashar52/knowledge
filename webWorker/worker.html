@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+
+<script>
+    if(window.Worker) {
+        let myWorker = new Worker("worker.js");
+        let message = { addThis: {a: 1, b: 3}};
+        myWorker.postMessage(message);
+        myWorker.onmessage = function(event) {
+            console.dir(event.data.result);
+        }
+
+    }
+</script>
+</html>

@@ -1,14 +1,9 @@
-Hi, this is Rajarshi!!
-
-Hi
-
-
 const o1 = {a: 1, b: 2, c: function Name() {console.log('dsdsds')}, e: [1,2,3]};
 const o2 = {a: 1, b: 2, c: 3, d: {c1: d2}};
 
 o1 === o2 // -> false
 
-const equalObj = (o1, o2) {
+const equalObj = (o1, o2) => {
 	let obj1Keys = Object.keys(o1);
   let obj2Keys = Object.keys(o1);
   if(obj1Keys.length !== obj2Keys.length) return false;
@@ -19,9 +14,13 @@ const equalObj = (o1, o2) {
         if(typeof obj1Value === 'object' && typeof obj2Value === 'object') {
                 if(Array.isArray(obj1Value) && Array.isArray(obj2Value)) {
                     if(obj1Value.length !== obj2Value.length) return false;
-            else compareValue(JSON.stringify(obj1Value), JSON.stringify(obj2Value)
-                equalObj(obj1Value, obj2Value);
-        else return false;
+                }
+          }
+          else {
+            compareValue(JSON.stringify(obj1Value), JSON.stringify(obj2Value));
+            return equalObj(obj1Value, obj2Value);
+          }
+        return false;
         
         if(typeof obj2Value === 'function' && typeof obj1Value === 'function') compareValue(JSON.stringify(o1.item), JSON.stringify(o2.item);
         else return false;
