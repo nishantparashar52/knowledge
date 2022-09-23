@@ -4,7 +4,7 @@ function throttle(fn, delay) {
     return (...args) => {
         let now = new Date().getTime();
         if(now - lastCalled < delay) return;
-        fnCalled = now;
+        lastCalled = now;
         return fn(...args);
     }
 }

@@ -3,7 +3,6 @@ function FlattenObj(obj) {
     function innerFn(obj, pkey) {
         let parentKey = pkey;
         for(let [key, value] of Object.entries(obj)) {
-            const [key, value ] = arr;
             const finalKey = parentKey ? parentKey + '_' + key : key;
             if(typeof value === 'object') {
                 innerFn(value, finalKey);

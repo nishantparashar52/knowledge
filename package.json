@@ -15,9 +15,12 @@
     "react-scripts": "latest"
   },
   "dependencies": {
-    "http-server": "^0.12.3"
+    "express": "^4.17.3",
+    "http-server": "^0.12.3",
+    "mongodb": "^4.5.0",
+    "require": "^2.4.20"
   },
-  "main": "BST.js",
+  "main": "CustomPromise/Promise.html",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nishantparashar52/knowledge.git"

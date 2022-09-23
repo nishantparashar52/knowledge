@@ -25,7 +25,7 @@ class Infinite {
             rootMargin: "0px",
             threshold: '1.0'
         }
-        let observer = new IntersectionObserver(this.handleIntersect.bind(this), options);
+        let observer = new IntersectionObserver(this.handleIntersect.bind(this));
         observer.observe(this.endList);
     }
     handleIntersect(entries, observer) {

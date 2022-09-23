@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="height: 2vh" id="h1">Hello</div>
+    <img id="loadImage" style="height: 400px; width: 500px" />
+    <div id="workerMessage"></div>
+    <ul id="listItem">
+        <li>List1</li>
+         <li>List2</li>
+          <li>List3</li>
+    </ul>
+    <script type="text/javascript" src="./LoopDetectLinkedList.js"></script>
+    <script>
+        if(window.Worker) {
+          let worker = new Worker('./Worker.js');
+          let message = {addThis: {a: 1, b: 2}};
+          worker.postMessage(message);
+          worker.onmessage = function({data: {message}}) {
+              document.getElementById('workerMessage').innerHTML = message;
+              console.log(message);
+          }
+        }
+        if('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker
+                .register('./serviceworkerPages.js')
+                .then(data => console.log('registered'))
+                .catch(err => console.log(err));
+            })
+        }
+    </script>
+</body>
+</html>

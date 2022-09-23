@@ -1,0 +1,25 @@
+<!doctype html>
+<script type="module">
+  import MyPromise from './MyPromise.js';
+//   new MyPromise((resolve, reject) => {
+//       setTimeout(() => {
+//         //   resolve(10)
+//         resolve(10)
+//         }, 1000)
+//   })
+//   .then(val => {
+//       new MyPromise((resolve, reject) => {
+//         setTimeout(() => {
+//             reject('rejected again')
+//         }, 1000);
+//       })
+//   .catch(err => `${err} ${val} times !`)
+// //   .catch(err => console.log(err))
+// //   .catch(err => console.log(`${err}`))
+// //   .catch(err => console.log(`${err} successfully`))
+//   .finally(err => console.log(`${err} hello`))
+
+  MyPromise.reject(10).then(val => console.log(val)).catch(val => console.log(val));
+  MyPromise.all([Promise.resolve(10), Promise.resolve(100), Promise.reject(12)]).then(results => console.log(results)).catch(e => console.log(e));
+//   });
+</script>

@@ -1,0 +1,14 @@
+.wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.parent {
+    display: flex;
+    flex-basis: 25%;
+    flex-direction: column;
+}
+
+.heading {
+    font-weight: 700;
+}

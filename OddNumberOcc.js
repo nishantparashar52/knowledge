@@ -7,5 +7,5 @@ function oddNumber(arr) {
 function countArr(arr) {
     let a = [...arr];
     const countObj = a.reduce((obj, curr) => obj[curr] = (obj[curr] || 0) + 1, {});
-    return Object.keys(countObj).find(item => obj[item] === 1);
+    return Object.keys(countObj).find(item => countObj[item] === 1);
 }

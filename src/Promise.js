@@ -12,6 +12,17 @@ function Top() {
 });
 }
 
+let promise = new Promise((resolve, reject) => {
+    let req = new XMLHttpRequest();
+    req.open('get', 'http://randomuser.me/api');
+    req.onload = resolve;
+    req.onerror = reject;
+    req.send();
+})
+
+promise.then(function (data) {
+    let d = data.target.response;
+})
 
 // then .then
 const Promise = (new Promise(resolve)).then(handleFn1).then(handleFn2).then(handleFn3);

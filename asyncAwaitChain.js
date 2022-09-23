@@ -2,7 +2,7 @@ var A = wait => new Promise((resolve, reject) => setTimeout(resolve), wait);
 var A1 = wait => new Promise((resolve, reject) => setTimeout(resolve), wait);
 var A2 = wait => new Promise((resolve, reject) => setTimeout(resolve), wait);
 
-[A(100), A1(1000), A2(2000)].reduce((p, fn) => p.then(f), Promise.resolve())
+[A(100), A1(1000), A2(2000)].reduce((p, fn) => p.then(fn), Promise.resolve())
 .then(result3 => console.log(`all passed ${result3}`));
 
 
@@ -14,7 +14,7 @@ async function fetchUrl(url) {
     var data = await fetch(url);
     console.log(data.text())
 }
-
+let urls = ['https://dummy.restapiexample.com/api/v1/employees', 'https://dummy.restapiexample.com/api/v1/employee/1']
 const jsonRes = urls.map(async url => {
     const response = await fetch(url);
     console.log(await response.text());

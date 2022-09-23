@@ -9,8 +9,8 @@ const equalObj = (o1, o2) => {
   if(obj1Keys.length !== obj2Keys.length) return false;
   
   for(const [key,value] of Object.entries(obj)){
-    const obj1Value = o1[item];
-    const obj2Value = o2[item];
+    const obj1Value = o1[value];
+    const obj2Value = o2[value];
         if(typeof obj1Value === 'object' && typeof obj2Value === 'object') {
                 if(Array.isArray(obj1Value) && Array.isArray(obj2Value)) {
                     if(obj1Value.length !== obj2Value.length) return false;
@@ -63,7 +63,7 @@ function debouce(fn, delay) {
     // if(timer) clearTimeout(timer);
 			timer = setTimeout(() => {
 			timer = false;
-			fn(args), delay);
+			fn(args), delay});
 		}
   }
 }
@@ -74,7 +74,7 @@ function debouce(fn, delay) {
 
 new Promise((resolve, reject) => resolve(setTimout(() => console.log(), 100))
 
-var a = new Promise
+var a = new Promise;
 
 a.then(fn => fn())
 .then(val => console.log()
