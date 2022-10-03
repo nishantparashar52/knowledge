@@ -29,9 +29,30 @@ class Trie {
         }
         return current.endOfWord;
     }
+    findGroup(word) {
+        let current = this.root;
+        for(let w of word) {
+            current = current['children'][w];
+        }
+        let arr = [], str = '';
+        function innerFn(current, str = '') {
+            Object.keys(current.children).map(item => {
+                let currItem = current.children[item];
+                if(!currItem.endOfWord) {
+                    str = str.concat(currItem.value);
+                    return innerFn(current.children[item], str);  
+                } else str = str.concat(currItem.value);
+                arr.push(str);
+                str = '';
+            });
+            return arr;
+        }
+        return innerFn(current);
+    }
 }
 let T = new Trie();
-T.add('bat');
+T.add('batman');
 T.add('banana');
 T.add('nishant parashar');
 console.log(T.find('nishant parashar'));
+console.log(T.findGroup('bat'));
