@@ -6,6 +6,12 @@ import {CombinationSum, CombinationSum2, CombinationSum3} from '../combinationSu
 
 import PalindromePartition from '../PalindromePartition.js';
 import NQueen from '../NQueen.js';
+import LetterCombination from '../LetterCombination.js';
+import OceanView from './../OceanView.js';
+import LRUCache from '../LRUCache.js';
+import MinStack from '../MinStack.js';
+import SimplifyPath from '../SimplifyPath.js';
+
 
 
 let n = 1;
@@ -32,3 +38,29 @@ root.right.right = new Node(n++);
 // console.log(PalindromePartition('aab'));
 
 console.log(NQueen(4));
+
+console.log(LetterCombination('23'));
+// OCeanView
+console.log(OceanView([4,2,3,1]));
+console.log(OceanView([2,2,2,2]));
+console.log(OceanView([1,3,2,4]));
+console.log(OceanView([4,3,2,1]));
+
+let L = new LRUCache(3);
+L.put(4, 2);
+L.put(10, 20);
+L.put(12, 30);
+console.log(L.put(15, 25));
+console.log(L.get(10));
+
+let mStack = new MinStack();
+mStack.push(-2);
+mStack.push(0);
+mStack.push(-3);
+mStack.getMin();
+mStack.pop();
+mStack.top();
+
+
+console.log(SimplifyPath("/home//foo/"));
+
