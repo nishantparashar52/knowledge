@@ -11,6 +11,10 @@ import OceanView from './../OceanView.js';
 import LRUCache from '../LRUCache.js';
 import MinStack from '../MinStack.js';
 import SimplifyPath from '../SimplifyPath.js';
+import PalindromeLinkedList from '../PalindromeLinkedList.js';
+import AddNumberLinkedList from '../AddNumberLinkedList.js';
+import mergeTwoLists from '../MergeSortedLinkedList.js';
+import RotatedSortedArr from '../RotatedSortedArr.js';
 
 
 
@@ -63,4 +67,37 @@ mStack.top();
 
 
 console.log(SimplifyPath("/home//foo/"));
+
+
+// 
+function LinkedList(list) {
+    this.val = list;
+    this.next = null;
+}
+
+
+let L1 = new LinkedList(1);
+L1.next = new LinkedList(2);
+L1.next.next = new LinkedList(2);
+L1.next.next.next = new LinkedList(3);
+L1.next.next.next.next = new LinkedList(4);
+
+// L1.next.next.next.next.next = new LinkedList(4);
+
+
+let L2 = new LinkedList(3);
+L2.next = new LinkedList(4);
+L2.next.next = new LinkedList(5);
+// L2.next.next.next = new LinkedList(1);
+// L2.next.next.next.next = new LinkedList(3);
+console.log(PalindromeLinkedList(L1));
+
+console.log(AddNumberLinkedList(L1, L2));
+
+// console.log(mergeTwoLists(L1, L2));
+
+
+console.log(RotatedSortedArr([4,5,6,7,0,1,2], 0));
+
+
 
