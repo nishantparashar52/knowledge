@@ -1,0 +1,25 @@
+class Promise {
+    isResolve = false;
+    resolvedData = null;
+    thenFn;
+    resolveChaining = [];
+    constructor(func) {
+        const resolve = data => {
+            this.resolvedData = data;
+            this.isResolve = true;
+            if(this.resolveChaining.length) {
+                this.resolveChaining.reduce((acc, fn) => fn(acc), this.resolvedData);
+            }
+        }
+        func(resolve);
+    }
+    then(fn) {
+        this.resolveChaining.push(fn);
+        if(this.isResolve) {            
+            this.resolveChaining.reduce((acc, curr) => curr(acc), this.resolvedData);
+        }
+    }
+}
+
+new Promise((resolve) => setTimeout(() => resolve('hello'), 1000)).then(val => console.log(val));
+new Promise((resolve) => resolve('hello2')).then(val => console.log(`val ${val}`));

@@ -102,3 +102,12 @@ function flatten(arr) {
     innerFn(arr);
     return result;
 }
+
+
+
+function Flatten(arr) {
+    return arr.reduce((acc, curr) => {
+        if(Array.isArray(curr)) return result.concat(Flatten(curr));
+        else return acc.concat(curr);
+    }, []);
+}

@@ -1,0 +1,29 @@
+body{
+    max-width: 1280px;
+}
+.progress-bar {
+    height: 40px;
+    width: 200px;
+    background-color: #ccc;
+    margin-bottom: 10px;
+}
+.progress-outer {
+    background-color: green;
+    width: 0px;
+    transition: width 3s ease-in;
+    height: 100%;
+}
+.active {
+    width: 100%;
+}
+.bar {
+    height: 40px;
+    background-color: #ccc;
+    margin-bottom: 10px;
+    width: 0;
+}
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+}

@@ -7,7 +7,7 @@ function zigzag(root) {
             traverse(root.left, level + 1);
             traverse(root.right, level + 1);
         }
-        results(root, 0);
+        traverse(root, 0);
     return results;
 }
 zigzag([3,9,null,null,15,7])

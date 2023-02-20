@@ -6,4 +6,11 @@ class Node {
     }
 }
 
-export default Node;
+class BTree {
+    constructor(val) {
+        this.children = [];
+        this.value = val;
+    }
+}
+
+export {Node, BTree};

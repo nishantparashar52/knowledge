@@ -20,26 +20,24 @@ const datacenters = [
 ];
 
 
-(function helper() {
-    const obj = {};
-    let count = datacenters.length * applicationTypes.length;
-    for(let i = 0, len = datacenters.length; i < len; i++) {
-        objKey = datacenters[i].name;
-        if(!obj[objKey]) { obj[objKey] = {'protectedApps': 0, 'unprotectedApps': 0} };
-        for(let j = 0, innerLen = applicationTypes.length; j < innerLen; j++) {
-            return getAppData(datacenters[i].url, applicationTypes[j]).then(result => {
-                objKey = datacenters[i].name;
-                getFinalResult(result, objKey, obj);
-                count = count - 1;
-                if(count === 0) return obj;
-            });
-        }
-    }
-})();
-function getFinalResult(result, objKey, obj) {
-    obj[objKey] = {'protectedApps' : obj[objKey].protectedApps + result.protectedApps, 'unprotectedApps' : obj[objKey].unprotectedApps + result.unprotectedApps};
-    return obj;
+
+const getDataCenterApps = async (datacenters, applicationTypes) => {
+    const promise = datacenters.map(datacenter => {
+        return Promise.all(applicationTypes.map(applicationType => {
+            return getAppData(datacenter.url, applicationType)
+        }))
+    });
+    const datacenterApp = await Promise.all(promise);
+    return datacenterApp.map(applicationTypeData =>
+        applicationTypeData.reduce((acc, {protectedApps, unprotectedApps}) => {
+        return {
+            protectedApps: acc.protectedApps + protectedApps,
+            unprotectedApps: acc.unprotectedApps + unprotectedApps,
+        };
+    }, {protectedApps: 0, unprotectedApps: 0})
+    );
 }
+getDataCenterApps(datacenters, applicationTypes).then(data => console.log(data))
 
 fetch('http://dummy.restapiexample.com/api/v1/employees')
 .then(response => response.json())

@@ -29,7 +29,6 @@ const update3 = item => p3.textContent = item;
 
 var observarble = new Observable();
 observarble.subscribe(update1);
-observarble.subscribe(update2);
-observarble.subscribe(update3);
+observarble.unsubscribe(update1);
 
 input.addEventListener('keyup', ev => observarble.notify(ev.target.value));

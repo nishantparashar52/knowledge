@@ -50,3 +50,17 @@ resolveAll(promise).then(results => {
 }).catch(e => {
     console.log('error');
 });
+
+
+function resolveAllC(promises) {
+    let result = [];
+    return new promise((resolve, reject) => {
+        promises.map((promise, index) => {
+            promise.then(val => {
+                if(index !== promises.length) {
+                    result.push(val);
+                } else resolve(result);
+            })
+        })
+    })
+}

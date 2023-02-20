@@ -32,7 +32,8 @@ class Trie {
     findGroup(word) {
         let current = this.root;
         for(let w of word) {
-            current = current['children'][w];
+            if(current['children'][w]) current = current['children'][w];
+            else return 'false';
         }
         let arr = [], str = '';
         function innerFn(current, str = '') {

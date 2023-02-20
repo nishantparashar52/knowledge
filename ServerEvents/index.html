@@ -7,6 +7,13 @@
     <title>Document</title>
 </head>
 <body>
-    <script type="text/javascript" src=""></script>
+    <!-- <script type="text/javascript" src="./.js"></script> -->
+    <script>
+        const source = new EventSource('http://localhost:3000');
+
+        source.addEventListener('time', function(event) {
+        console.log(event.data);
+        });
+    </script>
 </body>
 </html>

@@ -281,3 +281,16 @@ function findGridTraveller(m,n) {
     }
     return table[m][n];
 }
+
+function coinChange(coins, total) {
+    let coinDpArr2d = Array.from(Array(coins.length), _ => Array(total).fill(0));
+    for(let i of coins) {
+        for(let j of totals) {
+            if(j > i) {
+                coinDpArr2d[i][j] = Math.min(coinDpArr2d[i - 1][j], 1 + coinDpArr2d[i][j- i]);
+            }
+            else coinDpArr2d = coinDpArr2d[i - 1][j];
+        }
+    }
+    return coinDpArr2d[coins.length - 1][total - 1];
+}

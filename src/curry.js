@@ -1,6 +1,6 @@
 function curry(fn) {
     return function curried (...arg) {
-        if(fn.length <= arg.length) return fn(arg);
+        if(fn.length <= arg.length) return fn.apply(this, ...arg);
             return function (...arg2) {
                 return curried.apply(arg.concat(...arg2));
             }

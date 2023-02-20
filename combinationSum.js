@@ -10,6 +10,7 @@ function CombinationSum(k, n) {
         if(slate.length === n) {
             if(k === 0) {
                 result.push(slate.slice());
+                console.log('result here');
             }
             return;
         }
@@ -56,9 +57,7 @@ function CombinationSum2(nums, sum) {
 function CombinationSum3(nums, sum) {
 
     const result = [];
-    let c = 1;
     const dfs = (i, nums, sum, slate) => {
-        console.log(c++);
         if(sum < 0) return;
         else if(sum === 0) {
             result.push(slate.slice());
@@ -74,4 +73,34 @@ function CombinationSum3(nums, sum) {
     return result;
 }
 
-export {CombinationSum, CombinationSum2, CombinationSum3};
+
+
+
+function CombinationSumMax(nums) {
+    const result = [];
+    const dfs = (i, nums, sum, slate) => {
+        if(sum < 0) return;
+        else if(sum === 0) {
+            result.push(slate.slice());
+            return;
+        }
+        for(let j = i; j< nums.length; j++) {
+            slate.push(nums[j]);
+            dfs(j+1, nums, sum - nums[j], slate);
+            slate.pop();
+        }
+    }
+    const [num, sum] = findMax(nums);
+    dfs(0, num, sum, []);
+    return result;
+}
+function findMax(nums) {
+    let max = 0;
+    for(let i = 0, len = nums.length; i < len;i++) {
+        if(nums[max] < nums[i]) max = i;
+    }
+    const maxNum = nums[max];
+    nums.splice(max, 1);
+    return [nums, maxNum];
+}
+export {CombinationSum, CombinationSum2, CombinationSum3, CombinationSumMax};

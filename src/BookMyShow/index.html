@@ -19,7 +19,7 @@
             background-color: #fff;
             cursor: pointer;
         }
-        td.booking {
+        td[booked="true"] {
             background-color: #ccc; 
         }
         .btn {
@@ -40,7 +40,9 @@
     </style>
 </head>
 <body>
-    <div id="bookMyshow"></div>
-    <script src="./index.js" type="text/javascript"></script>
+    <div id="bookMyshow">
+    </div>
+    <div id="bookNow" class="btn" style="display:none">Book Now</div>
+    <script src="./index.js" type="module"></script>
 </body>
 </html>

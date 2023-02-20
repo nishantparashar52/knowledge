@@ -3,6 +3,26 @@
 // toys max toys ['toy1', 'toy2', 'toy1', 'toy3','toy2', 'toy3', 'toy2']
 // Round 4
 
+function KDistinctToys(arr, size) {
+  let slow = 0, fast = 0, toys = {}, max = 0;
+  // use fast and slow pointer in while loop
+
+  while(fast !== arr.length) {
+      let elem = arr[fast];
+      toys[elem] = toys[elem] ? toys[elem] + 1: 1;
+      if(Object.keys(toys).length <=size) fast++;
+      else {
+          if(toys[arr[slow]] > 1) {
+              toys[arr[slow]] = toys[arr[slow]]- 1;
+          } else delete toys[arr[slow]];
+          slow++;
+      }
+      max = Math.max(max, fast - slow);
+  }
+  return max;
+}
+KDistinctToys(['toy1', 'toy2', 'toy1', 'toy3','toy2', 'toy3', 'toy2'], 2);
+
 const endorsements = [
   { skill: "css", user: "Bill" },
   { skill: "javascript", user: "Chad" },
@@ -34,12 +54,12 @@ const endorsements = [
 
 function CreateSortedUser(endorsements) {
   const hashMapAcc = endorsements.reduce((acc, item) => {
-    const [skill, user] = item;
+    const {skill, user} = item;
     if(acc[skill]) acc[skill] = [...acc[skill], user]; 
     else acc[skill] = [user];
     return acc;
   }, {});
-  // console.log(hashMapAcc);
+  console.log(hashMapAcc);
   let finalResult = [];
   Object.keys(hashMapAcc).forEach((item, index) => {
     finalResult[index] = {};

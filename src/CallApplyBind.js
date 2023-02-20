@@ -1,28 +1,36 @@
-// call apply bind
 
-let name1 = {
-    firstName: 'nisahnt',
-    lastName: 'parashar'
-};
-
-const fullName = function(place, place2) {
-    console.log(this.firstName+ ',' + this.lastName + ', ' + place, ', second'+ place2);
+function printName(arg) {
+    console.log(`Hi ${arg} ${this.name}`);
 }
-fullName.call(name1, 'delhi', 'chandigarh');
-fullName.apply(name1, ['delhi', 'mohali']);
+let obj = {name: 'nishant'}
 
-const bindFullName = fullName.bind(name1, 'delhi', 'new Delhi bind');
-console.log(bindFullName());
+printName.call(obj);
+
+let obj1 = {
+    n: 1,
+    fn: function() {this.n}
+}
+
+Function.prototype.myCall = function(obj, ...args) {
+    obj.fn = this;
+    obj.fn(...args);
+}
 
 
-// polyfill mybind
+Function.prototype.myApply = function(obj, args) {
+    obj.fn = this;
+    obj.fn(args);
+}
 
-Function.prototype.myBind = function (...args) {
-    let context = this,
-    params = args.slice(1);
-    return function () {
-        context.apply(args[0], params);
+printName.myApply(obj, ['hello']);
+
+
+Function.prototype.myBind = function(obj) {
+    obj.fn = this;
+    return function(...args) {
+        obj.fn(...args);
     }
 }
-const polyfillBind = fullName.myBind(name1, 'delhi', 'aslong');
-console.log(polyfillBind('uttrakhand'));
+
+let l1 = printName.myBind(obj);
+l1('hello');

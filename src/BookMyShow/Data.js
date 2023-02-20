@@ -5,7 +5,7 @@ const BMSData = {
     layout: [{
         start: 1,
         end: 15,
-        seats: []
+        seats: [{'available': true}, {'available': true}]
     },
     {
         start: 1,
@@ -15,7 +15,32 @@ const BMSData = {
     {
         start: 7,
         end:15,
+        seats: ['', '', '', '', '', '', '', {'available': true}, {'available': true}]
+    },
+    {
+        start: 7,
+        end:15,
         seats: []
+    },
+    {
+        start: 7,
+        end:15,
+        seats: []
+    },
+    {
+        start: 7,
+        end:15,
+        seats: []
+    },
+    {
+        start: 3,
+        end:15,
+        seats: []
+    },
+    {
+        start: 3,
+        end:15,
+        seats: ['', '', {'available': true}, {'available': true}, '', {'available': true}, {'available': true}]
     }
 ]};
 

@@ -6,17 +6,41 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <button id="num">Add Numbers</button>
+    <p>Enter a number to calculate its factorial:</p>
+    <input type="number" id="input" />
+    <button id="calculate">Calculate</button>
+    <div id="result"></div>
 </body>
 
 <script>
+    const input = document.getElementById('input');
+      const result = document.getElementById('result');
+      
+      // Attach an event listener to the calculate button
+      const button = document.getElementById('calculate');
+      const num =document.getElementById('num');
     if(window.Worker) {
         let myWorker = new Worker("worker.js");
-        let message = { addThis: {a: 1, b: 3}};
-        myWorker.postMessage(message);
+        
         myWorker.onmessage = function(event) {
             console.dir(event.data.result);
         }
+        num.addEventListener('click', () => {
+            let message = { addThis: {a: 1, b: 3}};
+            myWorker.postMessage(message);
+        })
+        button.addEventListener('click', () => {
+        // Get the input value and send it to the worker
+        const value = parseInt(input.value);
+        myWorker.postMessage(value);
+        
+        // Show a loading message
+        result.innerHTML = 'Calculating...';
+      });
+      myWorker.addEventListener('message', event => {
+        result.innerHTML = `The factorial of ${event.data.input} is ${event.data.result}`;
+      });
 
     }
 </script>

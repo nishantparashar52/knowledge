@@ -1,8 +1,8 @@
 import DFS from '../DFS.js';
-import Node from '../Node.js';
+import {Node, BTree} from '../Node.js';
 import {ValidParenthesis, ValidParenthesisUsingCount} from '../ValidParenthesis.js';
 import {Permutation, PermutationDuplicate} from '../Permutation.js';
-import {CombinationSum, CombinationSum2, CombinationSum3} from '../combinationSum.js';
+import {CombinationSum, CombinationSum2, CombinationSum3, CombinationSumMax} from '../combinationSum.js';
 
 import PalindromePartition from '../PalindromePartition.js';
 import NQueen from '../NQueen.js';
@@ -15,6 +15,12 @@ import PalindromeLinkedList from '../PalindromeLinkedList.js';
 import AddNumberLinkedList from '../AddNumberLinkedList.js';
 import mergeTwoLists from '../MergeSortedLinkedList.js';
 import RotatedSortedArr from '../RotatedSortedArr.js';
+import KDistinctToys from '../KDistinctToys.js';
+import LetterCaseCombination from '../LetterCaseCombination.js';
+import Subset from '../SubSet78.js';
+import Subset90 from '../SubSet90.js';
+import levelOrder from '../LevelOrderBTree.js';
+import CheckValidBtree from '../ValidBtree.js';
 
 
 
@@ -26,7 +32,20 @@ root.left.left = new Node(n++);
 root.left.right = new Node(n++);
 root.right.left = new Node(n++);
 root.right.right = new Node(n++);
-// console.log(DFS(root));
+
+
+// let v = 1;
+// let root1 = new BTree(v++);
+// root1.children = new BTree(v++);
+// root1.children = new BTree(v++);
+// root1.children.children = new BTree(v++);
+// console.log(root1);
+
+console.log(CheckValidBtree("(1,2)", "(2,4)","(5,7)","(7,2)","(9,5)"));
+// console.log(CheckValidBtree("(1,2)", "(3,2)","(2,12)","(5,2)","(9,5)"));
+
+
+// console.log(DFS(root1));
 
 // console.log(ValidParenthesis(2));
 
@@ -35,9 +54,10 @@ root.right.right = new Node(n++);
 // console.log(ValidParenthesisUsingCount(2));
 // console.log(PermutationDuplicate([1,1,2]));
 
-// console.log(CombinationSum(7,3));
-// console.log(CombinationSum2([10,1,2,7,6,1,5],8));
-// console.log(CombinationSum3([2,3,6,7],10));
+console.log(CombinationSum(7,3));
+console.log(CombinationSum2([10,1,2,7,6,1,5],8));
+console.log(CombinationSum3([2,3,6,7],10));
+console.log(CombinationSumMax([ 4, 6, 23, 10, 1, 3 ]));
 
 // console.log(PalindromePartition('aab'));
 
@@ -90,14 +110,24 @@ L2.next = new LinkedList(4);
 L2.next.next = new LinkedList(5);
 // L2.next.next.next = new LinkedList(1);
 // L2.next.next.next.next = new LinkedList(3);
-console.log(PalindromeLinkedList(L1));
+// console.log(PalindromeLinkedList(L1));
 
-console.log(AddNumberLinkedList(L1, L2));
+// console.log(AddNumberLinkedList(L1, L2));
 
 // console.log(mergeTwoLists(L1, L2));
 
 
-console.log(RotatedSortedArr([4,5,6,7,0,1,2], 0));
+// console.log(RotatedSortedArr([4,5,6,7,0,1,2], 0));
 
+console.log(KDistinctToys(['Gi', 'Sn', 'Gi', 'Le', 'Au', 'Le', 'Au', 'Le'], 2));
+
+console.log(LetterCaseCombination('a1b2'));
+
+
+console.log(Subset([1,2,3]));
+
+console.log(Subset90([1,2,2]));
+
+console.log(levelOrder(root));
 
 

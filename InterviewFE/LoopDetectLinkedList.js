@@ -351,7 +351,8 @@ function ImageData() {
     return new Promise(resolve => {
       setTimeout(() => resolve({
 imgUrl: `https://picsum.photos/200/300?${Math.random() * 1000}`,
-        duration: Math.random() * (10 - 3) + 3}), Math.random() * (2000 - 500) + 500)
+        duration: Math.random() * (10 - 3) + 3}),
+        Math.random() * (2000 - 500) + 500)
     })
 }
 function getData() {

@@ -16,8 +16,11 @@
   },
   "dependencies": {
     "express": "^4.17.3",
+    "express.js": "^1.0.0",
+    "http": "0.0.1-security",
     "http-server": "^0.12.3",
     "mongodb": "^4.5.0",
+    "node": "^19.6.0",
     "require": "^2.4.20"
   },
   "main": "CustomPromise/Promise.html",

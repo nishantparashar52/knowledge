@@ -22,7 +22,7 @@ function send (res) {
     res.write("data: " + `hello from ${serverName} ---- [${i++}]\n\n`);
 
 
-    setTimeout(() => send(res), 3000);
+    setTimeout(() => send(res), 1000);
 }
 
 app.listen(port)

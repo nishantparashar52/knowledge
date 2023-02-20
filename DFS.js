@@ -1,5 +1,5 @@
 import Stack from './Stack.js';
-import Node from './Node.js';
+import {Node} from './Node.js';
 
 function DFSRec(root, res = '') {
     if(root === null) return res;

@@ -1,48 +1,4 @@
-const BMSData = {
-    category: [
-        {price: 236, start: 1, end: 2, name: 'Club'},
-        {name: 'Executive', price: 236, start: 3, end: 10,}],
-    layout: [{
-        start: 1,
-        end: 15,
-        seats: [{'available': true}, {'available': true}]
-    },
-    {
-        start: 1,
-        end: 15,
-        seats: []
-    },
-    {
-        start: 7,
-        end:15,
-        seats: ['', '', '', '', '', '', '', {'available': true}, {'available': true}]
-    },
-    {
-        start: 7,
-        end:15,
-        seats: []
-    },
-    {
-        start: 7,
-        end:15,
-        seats: []
-    },
-    {
-        start: 7,
-        end:15,
-        seats: []
-    },
-    {
-        start: 3,
-        end:15,
-        seats: []
-    },
-    {
-        start: 3,
-        end:15,
-        seats: ['', '', {'available': true}, {'available': true}, '', {'available': true}, {'available': true}]
-    }
-]};
+import { BMSData } from "./Data.js";
 const {
     category,
     layout
@@ -57,16 +13,13 @@ class BookMyShow {
         this.updateSeats = this.updateSeats.bind(this);
     }
     makeLayout() {
-        const layoutData = layout;
         const table = document.createElement('table');
-        const tHead = document.createElement('thead');
         const tBody = document.createElement('tbody');
         for (let i = 0; i < layout.length; i++) {
             let seatIndex = 1;
             let start = layout[i].start;
             let end = layout[i].end;
             let seats = layout[i].seats;
-            const thElem = [];
             const th = document.createElement('th');
             let thNode = document.createTextNode(this.rowName[i]);
             th.appendChild(thNode);
@@ -106,14 +59,14 @@ class BookMyShow {
         document.getElementById('bookMyshow').appendChild(table);
     }
     seatClick(ev) {
-        const noOfSeats = [];
+        const noOfSeats =this.seatsNeeded === 0 ? [] : [...this.bookedSeats];
         const _this = this;
         function nextSibling(elem) {
             if(_this.seatsNeeded === 0 && _this.bookedSeats) {
                 for(let i = 0, len = _this.bookedSeats.length; i < len; i++) {
                     const currSeat = _this.bookedSeats[i];
                     currSeat.setAttribute('available', true);
-                    currSeat.classList.remove('booking'); 
+                    currSeat.removeAttribute('booked'); 
                     _this.seatsNeeded += 1;
                 }
             }
@@ -123,33 +76,41 @@ class BookMyShow {
             }
             if(elem.getAttribute('available')) {
                 elem.removeAttribute('available');
-                elem.classList.add('booking');
+                elem.setAttribute('booked', true);
                 noOfSeats.push(elem);
                 _this.seatsNeeded -= 1;
             } else {
                 _this.bookedSeats = noOfSeats;
+                showBookNowBtn(noOfSeats, _this.bookedSeats)
                 return _this.bookedSeats;
             }
             if (_this.seatsNeeded > 0) nextSibling(elem.nextSibling);
             else {
-                _this.showBookNowBtn(noOfSeats);
+                _this.showBookNowBtn(_this.seatsNeeded, _this.bookedSeats);
                 _this.bookedSeats = noOfSeats;
                 return _this.bookedSeats;
             }
         }
         return nextSibling(ev.target);
     }
-    showBookNowBtn(noOfSeats) {
-        if(document.getElementById('bookNow')) return;
-        const btn = document.createElement('button');
-        btn.id = 'bookNow';
-        btn.innerHTML = 'Book Now';
-        btn.classList.add('btn');
-        document.getElementById('bookMyshow').appendChild(btn);
+    showBookNowBtn(noOfSeats, bookedSeats) {
+
+        const btn = document.getElementById('bookNow');
+        if(noOfSeats > 0) {
+            btn.style.display = 'none';
+            return;
+        };
+        btn.style.display = 'block';
+        const _this = this;
+        btn.addEventListener('click', function(){
+            alert(category[0].price * _this.bookedSeats.length);
+        })
     }
     updateSeats() {
         const seatsVal = document.getElementById('seats');
         this.seatsNeeded = seatsVal.value || '';
+        document.getElementById('bookMyshow').innerHTML ='';
+        this.makeLayout();
     }
 }
 
