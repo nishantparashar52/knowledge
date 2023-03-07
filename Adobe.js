@@ -74,3 +74,56 @@ console.log(CreateSortedUser(endorsements))
 
 //  Round 3
 // https://codesandbox.io/s/trusting-voice-7f5c2k?file=/src/Header/SearchNavigation.js
+
+
+/* Adobe Round 1 for Sr Computer scientist
+create a function which will reject 3 times and resolve at last.
+write a function which will take a promise and LimitRetry
+Once the limitRetry is reached return the promise else keep on 
+returning reject */
+let count = 0;
+let createPr = () => new Promise((resolve, reject) => {
+  if(count < 4) {count++; reject('error');}
+  else setTimeout(() => resolve('success'));
+})
+
+
+function TakePr(promise, retryLimit) {
+  let cc = 0;
+  return new Promise((res, rej) => {
+    function Retry() {
+      promise()
+      .then(res => {
+        console.log(`inside res ${res}`);
+      })
+      .catch(err => {
+        ++cc;
+        if(cc <= retryLimit) {
+          rej('error');
+          console.log('inside reject');
+          setTimeout(Retry, 1000);
+        } else {
+          setTimeout(Retry, 1000);
+        };
+      })
+    }
+    Retry();
+  })
+}
+
+TakePr(createPr, 5).then(val => console.log(val)).catch(er => console.log(er));
+
+/* Adobe Senior computer scientist */
+
+/* Interviewer Mayank Shekhar
+
+Hit this API: https://randomuser.me/api/?results=50&seed=abc&page=1
+From the list of data, display the location information for each user 
+
+https://codesandbox.io/s/react-new?file=/src/App.js
+
+Interviewer Viswesh prabhu Subramanian
+If you have to create similar to Byjus
+https://jsfiddle.net/nishant5857/uagrdwky/35/
+
+*/

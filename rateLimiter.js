@@ -13,24 +13,14 @@ function rateLimiter(cb, limit) {
         if(running === true) return;
         ++temp;
         ++totalCalled;
-        if(temp < limit && totalCalled <= 20) {
+        if(temp <= limit && totalCalled <= 20) {
+            if(temp === limit) running = true;
             cb().then((val) => {
                 console.log(val);
                 running = false;
                 --temp;
                 inner();
             });
-        } else if(temp === limit && totalCalled <= 20) {
-            running = true;
-            cb().then((val) => {
-                console.log(val);
-                running = false;
-                --temp;
-                inner();
-            });
-        } else if(temp > limit){
-            running = true;
-            return;
         }
     }
     inner();
