@@ -119,6 +119,7 @@ TakePr(createPr, 5).then(val => console.log(val)).catch(er => console.log(er));
 
 Hit this API: https://randomuser.me/api/?results=50&seed=abc&page=1
 From the list of data, display the location information for each user 
+https://codesandbox.io/s/objective-voice-3rs4qv
 
 https://codesandbox.io/s/react-new?file=/src/App.js
 
@@ -126,4 +127,9 @@ Interviewer Viswesh prabhu Subramanian
 If you have to create similar to Byjus
 https://jsfiddle.net/nishant5857/uagrdwky/35/
 
+
+Get top 3 words 
+const str =
+  "grapes grapes guava guava hi apple banana apple banana guava apple banana apple banana pomegranate";
+https://codesandbox.io/s/cocky-paper-znw4l3?file=/src/index.js
 */

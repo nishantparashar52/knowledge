@@ -31,7 +31,8 @@ function throttledFn(fn, delay) {
         setTimeout(function(){flag = true;},delay);
     }
 }
-throttledFn(function(){console.log('22')}, 100);
+const throttled = throttledFn(function(){console.log('22')}, 100);
+throttled();
 
 function throttleFn(fn, delay) {
     var flag = true;

@@ -1,7 +1,6 @@
 // K 12 interview
 
 var p1 = new Promise((resolve, reject) => {
-    debugger;
     setTimeout(() => {
         console.log('promise timeout');
         resolve('done');
@@ -69,4 +68,18 @@ Last round
 
 'affle', 'being', 'affle', 'cc', 'affle',  'cc', 'affle'
 
+*/
+
+/* Append _ with with location
+https://codesandbox.io/s/objective-voice-3rs4qv?file=/src/App.js
+*/
+
+/* File Folder Structure 
+https://codesandbox.io/s/practical-forest-11wes3?file=/src/data.js
+*/
+
+/* PageTree Structure
+    ReactHooks/hooks/PageTree
+    or codesandbox
+    https://codesandbox.io/s/morning-https-7jr288?file=/src/PageTree.js
 */

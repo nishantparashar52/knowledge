@@ -1,0 +1,16 @@
+.rating {
+    font-size: 30px;
+    cursor: pointer;
+}
+.star {
+    display: inline-block;
+    margin-right: 5px;
+    width: 30px;
+    height: 30px;
+    background: url() no-repeat;
+    background-color: #ccc;
+}
+.star.active {
+    background: url() no-repeat;
+    background-color: #000;
+}

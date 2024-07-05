@@ -1,0 +1,17 @@
+.box-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+.box {
+    display: flex;
+    flex-basis: calc(33% - 10px);
+    height: 30px;
+    width: 30px;
+    flex-wrap: wrap;
+}
+.border {
+    border: 1px solid #ccc;
+}
+.box.active {
+    background-color: #ccc;
+}

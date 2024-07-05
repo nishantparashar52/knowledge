@@ -12,6 +12,6 @@ function ImageData() {
 async function sequentialCall() {
    let response = await ImageData();
     
-   setTimeout(sequentialCall, response.duration);
+   setTimeout(sequentialCall, response.duration * 1000);
 }
 sequentialCall().then(val => console.log(val));

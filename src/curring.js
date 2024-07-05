@@ -27,6 +27,13 @@ function sum(arg) {
     }
 }
 
+function currying(fn, ...args) {
+    return function (...args1) {
+        if(!args) fn(...arr);
+        else args.concat(...args1);
+    }
+}
+
 function sum(arg) {
     let finalSum = arg;
     return function innerFn (b) {
@@ -60,10 +67,8 @@ const curryied = curry(sum);
 function curry(fn){
     return function curried (...arg) {
         if(fn.length <= arg.length) return fn(arg);
-        else {
-            return function (...args2) {
-                return curried.apply(arg.concat(...args2));
-            }
+        return function (...args2) {
+            return curried.apply(arg.concat(...args2));
         }
     }
 }
@@ -93,3 +98,24 @@ function calculation(a,b,c){
           return fn(...arg, ...arg1);
       }
   }
+
+  const isEven = num => num % 2 === 0;
+  const isOdd = num => num % 2 !== 0;
+  const numbers = [1,2,3,4,5];
+  const double = num => num * 2;
+
+  const add = a => b => a + b;
+
+  const add1 = function(a) {
+    return function (b) {
+        return a + b;
+    }
+  }
+  // filter all even numbers 
+
+
+  numbers.filter(isEven).map(double);
+
+  // add 10 to each number and get total sum
+
+  numbers.map(add1(10)).reduce((acc, curr) => acc + curr,0);

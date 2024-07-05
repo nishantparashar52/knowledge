@@ -1,0 +1,73 @@
+// 
+Design a car rental system. 
+You can rent cars of sizes mid , small and large. 
+When you return a car you produce a bill and park it. 
+If it is late it is $20 more for every hour that the car is late
+You should be able to see if a car can be booked at a particular time by a customer.
+User should be able to cancel a booking within
+24hrs or pay 50% to the charge and still cancel.
+
+Models layer
+
+Entitiess
+Car {
+    carSize: CarSize,
+    id: uuid,
+    carType: CarType
+}
+CarSize {
+    BIG: 10,SMALL: 5, MID: 8
+}
+carType {
+    HONDACITY: 
+}
+CarPark {
+    slot: type Slot[]
+}
+Slot {
+    type: [CarSize.SMALL, CarSize.MID, CarSize.LARGE]
+    isEmpty: Boolean
+}
+User {
+    id: uuid,
+    phone: number,
+    rentals: type Rental[]
+}
+
+Rental {
+    id: uuid,
+    carID: uuid,
+    start: number,
+    endtime: number,
+    userID: uuid,
+    status: type Status
+}
+Status {
+[COMPLETED, CREATED, CANCELLED, INPROGRESS]
+}
+// API
+
+1. Create a Rental
+ - Create a rental entity
+ - Associate that with a user
+ - Mark the car slot as empty
+ - Update the Status to CREATED
+
+2. Return a Rental
+- Dis-Associate from the user
+- Mark the slot as full
+- Generate the bill
+ - (End time - start time * 10$ + current time - end time * 20$)/3600
+- Update the Status to COMPLETED
+
+3. Get cars
+ - Get all rentals and filter out those in the current time range.
+ - 
+4. Cancel a booking
+- Find the rental id for the car id.
+- Find the user associated with the rental
+- Update the Status to CANCELLED
+
+5. PickUp a car
+ - Change the status to INPROGRESS
+

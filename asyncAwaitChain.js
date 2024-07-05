@@ -41,3 +41,17 @@ async function logUrl(urls) {
     // log them in order
     for(const textResponse in fetchedUrl) console.log(await textResponse);
 }
+
+
+
+function delayPromise(value, delay) {
+    return new Promise((res, rej) => {
+        setTimeout(() => res(value), delay);
+    })
+}
+
+delayPromise('hello', 1000).then(val => {
+    return delayPromise(`world ${val}`, 1000);
+}).then(val => {
+    return delayPromise(`india ${val}`, 1000);
+})

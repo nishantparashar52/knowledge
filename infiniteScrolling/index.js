@@ -33,7 +33,7 @@ class Infinite {
             if(entry.target.id ==='endList' && entry.isIntersecting && !this.isLoading) {
                 setTimeout(() => {
                     this.appendList();
-                }, 500);
+                }, 300);
             }   
         });
     }

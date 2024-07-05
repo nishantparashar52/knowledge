@@ -1,0 +1,30 @@
+.tabs-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.tabs {
+    padding: 8px;
+    border: 4px;
+    cursor: pointer;
+    min-width: 80px;
+}
+.tabs:hover {
+    background-color: #ccc;
+}
+.tabs.active {
+    background-color: #000;
+    color: #fff
+}
+.content {
+    border: 1px solid #ccc;
+    min-width: 500px;
+}
+.tabs-wrapper {
+    min-width: 500px;
+    max-width: 500px;
+    padding: 16px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}

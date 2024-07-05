@@ -7,9 +7,9 @@ function isMagicNumber(p) {
         if(hash[indice] === undefined) return false;
         finalNum += hash[indice];
     }
-    finalNum = strRev(finalNum);
+    let initialNum = strRev(finalNum);
     // finalNum = finalNum.split('').reverse('').join(''); // approach 1
-    return StrRef === p ? true : false;
+    return initialNum === finalNum ? true : false;
 }
 
 
