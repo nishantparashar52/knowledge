@@ -32,7 +32,7 @@ let taskList = [task(1000), task(2000), task(300)];
 function resolveAll(taskList) {
     let results = [];
     let processCompleted = 0;
-    new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
         taskList.map((promise, index) => {
             promise.then(val => {
                 results[index] = val;

@@ -7,22 +7,22 @@ class EventEmitter1{
         if(!this.callbacks[event]) this.callbacks[event] = [];
         this.callbacks[event].push(cb);
         return () => {
-            this.callbacks[event] = this.callbacks[event] && this.callbacks[event].filter(ev => cb !== ev)
+            this.callbacks[event] = this.callbacks[event].filter(c => c !== cb)
         }
     }
 
     emit(event, data){
         let cbs = this.callbacks[event]
         if(cbs){
-            cbs.forEach(cb => {
-                cb.call(null, data)
-            })
+            cbs.forEach(cb => cb(data))
         }
     }
 }
 
 const i = new EventEmitter1();
-const me = i.subsribe('message1', ev => console.log(`hello ${ev}`))
-i.emit('message1', 'Nishant');
+const me = i.subsribe('message2', ev => console.log(`hello ${ev}`))
+const me2 = i.subsribe('message2', ev => console.log(`hello ${ev}`))
+i.emit('message2', 'Nishant');
+me()
 
     
